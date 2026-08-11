@@ -1,0 +1,147 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --font-serif: var(--font-playfair), Georgia, serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+
+  --radius-sm: 2px;
+  --radius-md: 3px;
+  --radius-lg: 4px;
+}
+
+:root {
+  color-scheme: dark;
+
+  /* Deep matte black canvas with a faint warm undertone */
+  --background: oklch(0.145 0.004 60);
+  --foreground: oklch(0.92 0.012 75); /* warm off-white */
+
+  --card: oklch(0.17 0.005 60);
+  --card-foreground: oklch(0.92 0.012 75);
+
+  --muted: oklch(0.22 0.005 60);
+  --muted-foreground: oklch(0.62 0.012 70); /* warm gray */
+
+  /* Muted amber accent */
+  --accent: oklch(0.76 0.11 68);
+  --accent-foreground: oklch(0.15 0.004 60);
+
+  --border: oklch(0.28 0.006 65 / 55%); /* hairline neutral border */
+  --border-strong: oklch(0.4 0.008 65 / 70%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: 'liga' 1, 'calt' 1;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: var(--accent-foreground);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-serif;
+  }
+}
+
+@layer utilities {
+  /* Faint warm amber ambient glow */
+  .ambient-glow {
+    background:
+      radial-gradient(
+        60% 45% at 15% 0%,
+        oklch(0.76 0.11 68 / 8%) 0%,
+        transparent 60%
+      ),
+      radial-gradient(
+        50% 40% at 85% 20%,
+        oklch(0.7 0.09 55 / 5%) 0%,
+        transparent 65%
+      );
+  }
+
+  /* Subtle film grain overlay */
+  .grain::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .link-amber {
+    @apply transition-colors duration-300;
+  }
+  .link-amber:hover {
+    color: var(--accent);
+  }
+
+  /*
+    Gentle "breathing" halo for a current/active timeline dot. It is a soft
+    radial wash of the accent color that fades in and out over a slow ~6s
+    cycle — no scaling, no pulse, no bright glow. Opacity stays intentionally
+    low so it reads as ambient light rather than a notification.
+  */
+  .timeline-halo {
+    background: radial-gradient(
+      circle,
+      var(--accent) 0%,
+      oklch(0.76 0.11 68 / 45%) 35%,
+      transparent 70%
+    );
+    filter: blur(1px);
+    animation: halo-breathe 6s ease-in-out infinite;
+    will-change: opacity;
+  }
+
+  @keyframes halo-breathe {
+    0%,
+    100% {
+      opacity: 0.06;
+    }
+    50% {
+      opacity: 0.22;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .timeline-halo {
+      animation: none;
+      opacity: 0.12;
+    }
+  }
+}
