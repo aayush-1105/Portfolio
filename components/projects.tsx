@@ -4,7 +4,7 @@ import { GitHubIcon } from '@/components/icons/leetcode'
 import { SectionHeading } from '@/components/section-heading'
 import { Timeline } from '@/components/timeline'
 import { TimelineItem } from '@/components/timeline-item'
-import { projects } from '@/content/portfolio'
+import { projects, showProjectBadges } from '@/content/portfolio'
 
 function Field({ label, children }: { label: string; children: string }) {
   return (
@@ -36,9 +36,16 @@ export function Projects() {
             active={project.active}
           >
             <div className="flex flex-wrap items-baseline gap-x-4 gap-y-2">
-              <h3 className="font-serif text-3xl italic text-foreground md:text-4xl">
-                {project.name}
-              </h3>
+              <div className="flex flex-wrap items-center gap-3">
+                <h3 className="font-serif text-3xl italic text-foreground md:text-4xl">
+                  {project.name}
+                </h3>
+                {showProjectBadges && project.showBadge !== false && project.badge && (
+                  <span className="translate-y-[4.5px] rounded-sm border border-accent/40 bg-accent/10 px-2.5 py-0.5 font-mono text-[0.7rem] uppercase tracking-[0.2em] text-accent">
+                    {project.badge}
+                  </span>
+                )}
+              </div>
               <div className="flex items-center gap-4">
                 {project.github && (
                   <a

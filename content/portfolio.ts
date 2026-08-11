@@ -82,11 +82,17 @@ export type ProjectEntry = {
    * Omitted or false → normal dot.
    */
   active?: boolean
+  badge?: string // optional badge e.g. 'Work in progress'
+  showBadge?: boolean // EDITABLE: Set to false to hide badge for this specific project (defaults to true if omitted)
 }
+
+export const showProjectBadges = true // EDITABLE: Set to false to hide badges on all projects
 
 export const projects: ProjectEntry[] = [
   {
-    name: 'AI Powered CI/CD Failure Predictor (Work in progress)',
+    name: 'AI Powered CI/CD Failure Predictor',
+    badge: 'Work in progress',
+    showBadge: true, // EDITABLE: Set to false to switch off work in progress badge for this project
     problem: 'Unstructured CI/CD build logs make it difficult to quickly isolate root causes of pipeline failures.',
     solution: 'Engineered a data pipeline using Python and Regex to automatically extract, parse, and tokenize unstructured build logs into structured datasets. Trained a machine learning classification model using pandas and scikit-learn.',
     technologies: ['Python', 'Pandas', 'Scikit-Learn', 'Regex', 'Machine Learning'],
