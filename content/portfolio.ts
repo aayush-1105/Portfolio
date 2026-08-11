@@ -154,4 +154,4 @@ export const navLinks = [
   { label: 'CONTACT', href: '#contact' },
 ]
 
-export const resumeUrl = '/resume.pdf' // EDITABLE: RÉSUMÉ FILE
+export const resumeUrl = 'https://drive.google.com/file/d/1KhA6fZ8biyMSJGY8se52tgY9Z6wxOUVp/view?usp=sharing' // EDITABLE: RÉSUMÉ FILE
