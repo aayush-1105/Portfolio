@@ -100,6 +100,22 @@ export const projects: ProjectEntry[] = [
     active: true,
   },
   {
+    name: 'Mini-UnionFS — Union File System in Userspace (FUSE)',
+    problem: 'Need for a virtual file system that merges read-only and read-write directory layers with full POSIX operation support, replicating Docker’s layered filesystem model.',
+    solution: 'Implemented a simplified Union File System in C using FUSE, merging read-only and read-write directory layers into one virtual file system with full POSIX operation support. Engineered Copy-on-Write semantics and whiteout-based deletion handling; validated against an automated test suite.',
+    technologies: ['C', 'FUSE', 'Linux (Ubuntu)', 'POSIX APIs'],
+    impact: 'Successfully replicated Docker’s layered filesystem model with robust POSIX support and verified against an automated test suite with all tests passing.',
+    active: false,
+  },
+  {
+    name: 'Distributed Image Processing Pipeline',
+    problem: 'High computational latency and bottlenecking when processing large 4K high-resolution images sequentially.',
+    solution: 'Developed a distributed image processing pipeline using Apache Kafka and Python across 5 worker nodes. Split 4K images into 64 chunks to achieve parallel processing and dynamic load distribution.',
+    technologies: ['Apache Kafka', 'Python', 'Distributed Computing'],
+    impact: 'Reduced image processing time by 70% and achieved a 5x throughput improvement through parallelized chunking.',
+    active: false,
+  },
+  {
     name: 'Personal Portfolio Website',
     problem: 'Need for a professional, highly polished, and lightning-fast developer portfolio to showcase engineering projects, work experience, and technical toolkit.',
     solution: 'Engineered a modern personal portfolio website using Next.js 16 App Router, React 19, TypeScript, and Tailwind CSS v4. Features centralized content management, motion-driven reveal animations, custom dark theme aesthetics with warm amber ambient glow, and fully responsive design.',
@@ -135,8 +151,8 @@ export type SkillCategory = {
 export const skills: SkillCategory[] = [
   { category: 'Languages', items: ['Python', 'Java', 'C', 'SQL (OpenSQL)', 'JavaScript', 'HTML/CSS'] },
   { category: 'Frameworks', items: ['React', 'Node.js'] },
-  { category: 'Libraries & Tools', items: ['pandas', 'NumPy', 'Matplotlib', 'Appium', 'Selenium', 'PyTesseract'] },
-  { category: 'Developer Tools', items: ['Git', 'Visual Studio', 'IntelliJ'] },
+  { category: 'Libraries & Tools', items: ['pandas', 'NumPy', 'Matplotlib', 'Appium', 'Selenium', 'PyTesseract', 'FUSE', 'Apache Kafka', 'POSIX APIs'] },
+  { category: 'Developer Tools', items: ['Git', 'Visual Studio', 'IntelliJ', 'Linux', 'Distributed Computing'] },
 ]
 
 /* EDITABLE: CONTACT */
