@@ -146,7 +146,7 @@ export const contact = {
   location: 'Bangalore, India', // EDITABLE: LOCATION
   socials: {
     github: 'https://github.com/aayush-1105', // EDITABLE: GITHUB
-    linkedin: 'https://linkedin.com/in/aayushjha1105', // EDITABLE: LINKEDIN
+    linkedin: 'https://in.linkedin.com/in/aayush-jha-252a38217', // EDITABLE: LINKEDIN
     leetcode: 'https://leetcode.com/u/abcdev081/', // EDITABLE: LEETCODE
   },
 }
