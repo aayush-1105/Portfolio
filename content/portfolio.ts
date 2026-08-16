@@ -124,22 +124,6 @@ export const projects: ProjectEntry[] = [
     github: 'https://github.com/aayush-1105/Portfolio',
     active: true,
   },
-  {
-    name: 'Bill Split',
-    problem: 'Splitting expenses among groups often involves manual calculation errors and tedious tracking.',
-    solution: 'Developed a MERN Stack application for seamless bill splitting among users, featuring real-time expense tracking, user authentication, and automated settlement calculations.',
-    technologies: ['MongoDB', 'Express.js', 'React', 'Node.js', 'JavaScript'],
-    impact: 'Streamlined group expense management with automated calculations and secure user auth.',
-    active: false,
-  },
-  {
-    name: 'Weather Monitoring System',
-    problem: 'Need for reliable local weather tracking and real-time environmental condition alerts.',
-    solution: 'Built an Arduino-based weather tracking system using moisture, rain, and temperature sensors to monitor conditions and display real-time alerts on an LCD screen.',
-    technologies: ['Arduino', 'C++', 'Hardware Sensors', 'LCD Display'],
-    impact: 'Provided accurate real-time environmental monitoring and immediate visual alerts.',
-    active: false,
-  },
 ]
 
 /* EDITABLE: SKILLS (no bars, no ratings) */

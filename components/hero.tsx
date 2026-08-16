@@ -2,8 +2,9 @@
 
 import Image from 'next/image'
 import { motion } from 'motion/react'
-import { ArrowRight } from 'lucide-react'
-import { profile, currently } from '@/content/portfolio'
+import { ArrowRight, ArrowUpRight } from 'lucide-react'
+import { profile, currently, contact } from '@/content/portfolio'
+import { GitHubIcon, LinkedInIcon, LeetCodeIcon } from '@/components/icons/leetcode'
 
 const container = {
   hidden: {},
@@ -22,6 +23,30 @@ const item = {
 }
 
 export function Hero() {
+  const socials = [
+    {
+      label: 'GitHub',
+      href: contact.socials.github,
+      Icon: GitHubIcon,
+      iconColor: 'text-white',
+      hoverStyle: 'hover:border-white/30 hover:bg-white/[0.07] hover:shadow-[0_4px_20px_rgba(255,255,255,0.1)]',
+    },
+    {
+      label: 'LinkedIn',
+      href: contact.socials.linkedin,
+      Icon: LinkedInIcon,
+      iconColor: 'text-[#0a66c2]',
+      hoverStyle: 'hover:border-[#0a66c2]/40 hover:bg-[#0a66c2]/15 hover:shadow-[0_4px_20px_rgba(10,102,194,0.2)]',
+    },
+    {
+      label: 'LeetCode',
+      href: contact.socials.leetcode,
+      Icon: LeetCodeIcon,
+      iconColor: 'text-[#ffa116]',
+      hoverStyle: 'hover:border-[#ffa116]/40 hover:bg-[#ffa116]/15 hover:shadow-[0_4px_20px_rgba(255,161,22,0.2)]',
+    },
+  ]
+
   return (
     <section
       id="about"
@@ -57,10 +82,26 @@ export function Hero() {
           {/* EDITABLE: ABOUT ME */}
           <motion.div
             variants={item}
-            className="mt-8 max-w-xl space-y-4 text-pretty font-mono text-sm leading-relaxed text-muted-foreground"
+            className="mt-8 max-w-xl space-y-4 text-pretty font-mono text-sm leading-relaxed text-zinc-300"
           >
             {profile.about.map((paragraph, i) => (
               <p key={i}>{paragraph}</p>
+            ))}
+          </motion.div>
+
+          {/* Social Links with Original Brand Colors & Glow */}
+          <motion.div variants={item} className="mt-8 flex flex-wrap items-center gap-3">
+            {socials.map(({ label, href, Icon, iconColor, hoverStyle }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`group/pill inline-flex items-center gap-2.5 rounded-lg border border-white/10 bg-white/[0.03] px-4 py-2 font-mono text-xs uppercase tracking-[0.2em] text-zinc-300 transition-all duration-300 hover:-translate-y-0.5 hover:text-white ${hoverStyle}`}
+              >
+                <Icon className={`h-4 w-4 ${iconColor} transition-transform duration-300 group-hover/pill:scale-110`} />
+                <span>{label}</span>
+              </a>
             ))}
           </motion.div>
         </div>
@@ -68,17 +109,17 @@ export function Hero() {
         {/* Photo / avatar */}
         {profile.showAvatar && (
           <motion.div variants={item} className="order-first md:order-last">
-            <div className="relative w-48 overflow-hidden rounded-sm border border-border md:w-56">
+            <div className="relative aspect-[4/5] w-48 overflow-hidden rounded-xl border border-white/10 bg-card/40 md:w-56 shadow-2xl">
               <Image
                 src={profile.avatar || '/placeholder.svg'}
                 alt={`Portrait of ${profile.name}`}
-                width={1000}
-                height={1250}
-                className="h-auto w-full rounded-sm object-cover transition-all duration-700 transform-gpu"
-                style={{ imageRendering: 'auto' }}
+                fill
+                sizes="(max-width: 768px) 192px, 224px"
+                className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
                 priority
               />
-              <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-white/5" />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent" />
+              <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-white/10 rounded-xl" />
             </div>
           </motion.div>
         )}
@@ -90,23 +131,25 @@ export function Hero() {
         initial="hidden"
         animate="show"
         transition={{ delay: 0.5 }}
-        className="mt-20 border-t border-border pt-8"
+        className="mt-20 border-t border-border pt-10"
       >
         <p className="font-mono text-xs uppercase tracking-[0.35em] text-muted-foreground">
           Currently
         </p>
-        <dl className="mt-6 grid grid-cols-1 gap-x-8 gap-y-5 sm:grid-cols-2">
+        <dl className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
           {currently.map((entry) => (
             <div
               key={entry.label}
-              className="group flex items-start gap-3 border-b border-border/60 pb-4"
+              className="group relative flex items-start gap-3.5 rounded-xl border border-white/10 bg-white/[0.03] p-4 transition-all duration-300 hover:border-accent/30 hover:bg-white/[0.05]"
             >
-              <ArrowRight className="mt-0.5 h-4 w-4 shrink-0 text-accent transition-transform duration-300 group-hover:translate-x-1" />
-              <div>
+              <div className="rounded-lg bg-accent/10 p-2 text-accent transition-transform duration-300 group-hover:scale-110">
+                <ArrowRight className="h-4 w-4" />
+              </div>
+              <div className="min-w-0 flex-1">
                 <dt className="font-mono text-[0.7rem] uppercase tracking-[0.2em] text-muted-foreground">
                   {entry.label}
                 </dt>
-                <dd className="mt-1 font-mono text-sm text-foreground">
+                <dd className="mt-1 font-mono text-sm text-zinc-200 leading-snug">
                   {entry.value}
                 </dd>
               </div>

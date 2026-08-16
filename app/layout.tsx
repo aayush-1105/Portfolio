@@ -52,6 +52,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`dark ${playfair.variable} ${jetbrainsMono.variable}`}
     >
       <body className="bg-background font-mono antialiased">
