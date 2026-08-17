@@ -1,6 +1,5 @@
 # ⚡ Personal Engineering Portfolio & Journal
 
-[![Live Website](https://img.shields.io/badge/Live-Website-76b900?style=for-the-badge&logo=vercel&logoColor=white)](https://aayushspace.vercel.app/)
 
 A modern, high-performance, and fully responsive personal engineering portfolio website built with **Next.js 16 (App Router)**, **React 19**, **TypeScript**, and **Tailwind CSS v4**.
 
