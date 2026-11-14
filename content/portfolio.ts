@@ -21,7 +21,7 @@ export const profile = {
 export const currently = [
   { label: 'Current Focus', value: 'Distributed Systems & LLM Infrastructure' },
   { label: 'Education', value: 'B.Tech Computer Science, PES University (2023 — 2027)' },
-  { label: 'Current Project', value: 'VanguardAI — Containerized LLM Gateway' },
+  { label: 'Current Project', value: 'AI Powered CI/CD Failure Predictor' },
   { label: 'Availability', value: 'Open to Internships & Opportunities' },
 ]
 
@@ -90,6 +90,16 @@ export const showProjectBadges = true // EDITABLE: Set to false to hide badges o
 
 export const projects: ProjectEntry[] = [
   {
+    name: 'CI/CD Failure Predictor',
+    badge: 'Work in progress',
+    showBadge: true,
+    problem: 'Unstructured CI execution logs and lengthy feedback loops make it difficult to catch build failures early and isolate root causes prior to complete pipeline execution.',
+    solution: 'Built a multi-modal ML pipeline combining TravisTorrent build metadata and raw CI execution logs. Trained a LightGBM metadata classifier alongside a Bidirectional LSTM (BiLSTM) log sequence model to classify breakages across 8 distinct failure classes.',
+    technologies: ['Python', 'PyTorch', 'LightGBM', 'BiLSTM', 'SHAP'],
+    impact: 'Engineered an automated root-cause analysis (RCA) module using SHAP feature attribution to isolate failing log patterns and high-risk commit metadata, predicting pipeline failures prior to full completion.',
+    active: true,
+  },
+  {
     name: 'VanguardAI',
     badge: 'Active',
     showBadge: true,
@@ -99,14 +109,6 @@ export const projects: ProjectEntry[] = [
     impact: 'Engineered Redis-backed PII masking (300s TTL) that scrubs prompts and retrieved RAG chunks before external inference and rehydrates tags mid-stream over SSE, ensuring privacy-safe and resilient AI inference.',
     github: 'https://github.com/aayush-1105/VanguardAI',
     active: true,
-  },
-  {
-    name: 'CI/CD Failure Predictor',
-    problem: 'Unstructured CI execution logs and lengthy feedback loops make it difficult to catch build failures early and isolate root causes prior to complete pipeline execution.',
-    solution: 'Built a multi-modal ML pipeline combining TravisTorrent build metadata and raw CI execution logs. Trained a LightGBM metadata classifier alongside a Bidirectional LSTM (BiLSTM) log sequence model to classify breakages across 8 distinct failure classes.',
-    technologies: ['Python', 'PyTorch', 'LightGBM', 'BiLSTM', 'SHAP'],
-    impact: 'Engineered an automated root-cause analysis (RCA) module using SHAP feature attribution to isolate failing log patterns and high-risk commit metadata, predicting pipeline failures prior to full completion.',
-    active: false,
   },
   {
     name: 'Distributed Image Processing Pipeline',
