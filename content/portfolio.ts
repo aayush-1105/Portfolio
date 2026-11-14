@@ -2,26 +2,26 @@
  * ─────────────────────────────────────────────────────────────
  *  CENTRALIZED EDITABLE CONTENT
  *  Edit everything about the portfolio from this single file.
- *  All values below are PLACEHOLDERS — replace with real content.
+ *  Updated with verified details from resume.
  * ─────────────────────────────────────────────────────────────
  */
 
-/* {/* EDITABLE: PROFILE / HERO / ABOUT */
+/* EDITABLE: PROFILE / HERO / ABOUT */
 export const profile = {
   name: 'Aayush Jha',
   role: 'Computer Science Student',
   avatar: '/avatar.png',
   showAvatar: true, // EDITABLE: Set to false to hide the photo entirely
   about: [
-    'I am a CS Senior at PES University with a passion for software development, artificial intelligence and building practical systems that solve real world problems. My experience spans full-stack development, automated testing and a strong foundation in Python',
+    'I am a Computer Science undergraduate at PES University (2023 — 2027) with a focus on distributed systems, containerized LLM architectures, and machine learning infrastructure. My experience spans building high-throughput data pipelines, microservices, automated testing, and systems programming across Python, C, and TypeScript.',
   ],
 }
 
 /* EDITABLE: CURRENTLY BLOCK */
 export const currently = [
-  { label: 'Current Focus', value: 'Software Engineering & AI Systems' },
+  { label: 'Current Focus', value: 'Distributed Systems & LLM Infrastructure' },
   { label: 'Education', value: 'B.Tech Computer Science, PES University (2023 — 2027)' },
-  { label: 'Current Project', value: 'AI Powered CI/CD Failure Predictor' },
+  { label: 'Current Project', value: 'VanguardAI — Containerized LLM Gateway' },
   { label: 'Availability', value: 'Open to Internships & Opportunities' },
 ]
 
@@ -56,12 +56,12 @@ export const experience: ExperienceEntry[] = [
     company: 'Transaction Analysts',
     role: 'Summer Intern',
     duration: 'June 2025 — July 2025',
-    description: 'Contributed to native Android application testing, document privacy tooling, and conversational AI integration.',
+    description: 'Contributed to native Android application test automation, document privacy tooling, and conversational AI integration.',
     achievements: [
-      'Gained hands-on experience in native Android app testing using Appium.',
-      'Developed an Aadhaar censoring tool to automatically detect and mask Aadhaar numbers in documents.',
-      'Created home screen widgets and app shortcuts to enhance functionality of the company’s Android app.',
-      'Built an AI-powered help chatbot for the company’s website using a guided flow and conversational AI.',
+      'Developed and executed Android application test automation scripts using Appium.',
+      'Worked on an Aadhaar number masking solution for detecting and redacting sensitive information in documents.',
+      'Developed Android home-screen widgets and application shortcuts to improve accessibility.',
+      'Integrated an AI-powered chatbot using Ollama and Mistral into the company website for conversational assistance.',
     ],
   },
 ]
@@ -90,60 +90,71 @@ export const showProjectBadges = true // EDITABLE: Set to false to hide badges o
 
 export const projects: ProjectEntry[] = [
   {
-    name: 'AI Powered CI/CD Failure Predictor',
-    badge: 'Work in progress',
-    showBadge: true, // EDITABLE: Set to false to switch off work in progress badge for this project
-    problem: 'Unstructured CI/CD build logs make it difficult to quickly isolate root causes of pipeline failures.',
-    solution: 'Engineered a data pipeline using Python and Regex to automatically extract, parse, and tokenize unstructured build logs into structured datasets. Trained a machine learning classification model using pandas and scikit-learn.',
-    technologies: ['Python', 'Pandas', 'Scikit-Learn', 'Regex', 'Machine Learning'],
-    impact: 'Automated root-cause error isolation and predicted pipeline failures based on log patterns.',
+    name: 'VanguardAI',
+    badge: 'Active',
+    showBadge: true,
+    problem: 'Need for a unified LLM gateway resilient to vendor failures, high inference costs, uncurated RAG matches, and unauthorized PII leakage into external model APIs.',
+    solution: 'Built a containerized LLM gateway in FastAPI and Docker with dynamic provider/model routing, live model discovery, 3-state circuit breakers, and prompt guardrails. Implemented hybrid RAG combining Qdrant dense search, BM25, Reciprocal Rank Fusion, and cross-encoder reranking alongside semantic caching.',
+    technologies: ['Python', 'Docker', 'Redis', 'Qdrant', 'FastAPI'],
+    impact: 'Engineered Redis-backed PII masking (300s TTL) that scrubs prompts and retrieved RAG chunks before external inference and rehydrates tags mid-stream over SSE, ensuring privacy-safe and resilient AI inference.',
+    github: 'https://github.com/aayush-1105/VanguardAI',
     active: true,
   },
   {
-    name: 'Mini-UnionFS — Union File System in Userspace (FUSE)',
-    problem: 'Need for a virtual file system that merges read-only and read-write directory layers with full POSIX operation support, replicating Docker’s layered filesystem model.',
-    solution: 'Implemented a simplified Union File System in C using FUSE, merging read-only and read-write directory layers into one virtual file system with full POSIX operation support. Engineered Copy-on-Write semantics and whiteout-based deletion handling; validated against an automated test suite.',
-    technologies: ['C', 'FUSE', 'Linux (Ubuntu)', 'POSIX APIs'],
-    impact: 'Successfully replicated Docker’s layered filesystem model with robust POSIX support and verified against an automated test suite with all tests passing.',
+    name: 'CI/CD Failure Predictor',
+    problem: 'Unstructured CI execution logs and lengthy feedback loops make it difficult to catch build failures early and isolate root causes prior to complete pipeline execution.',
+    solution: 'Built a multi-modal ML pipeline combining TravisTorrent build metadata and raw CI execution logs. Trained a LightGBM metadata classifier alongside a Bidirectional LSTM (BiLSTM) log sequence model to classify breakages across 8 distinct failure classes.',
+    technologies: ['Python', 'PyTorch', 'LightGBM', 'BiLSTM', 'SHAP'],
+    impact: 'Engineered an automated root-cause analysis (RCA) module using SHAP feature attribution to isolate failing log patterns and high-risk commit metadata, predicting pipeline failures prior to full completion.',
     active: false,
   },
   {
     name: 'Distributed Image Processing Pipeline',
-    problem: 'High computational latency and bottlenecking when processing large 4K high-resolution images sequentially.',
-    solution: 'Developed a distributed image processing pipeline using Apache Kafka and Python across 5 worker nodes. Split 4K images into 64 chunks to achieve parallel processing and dynamic load distribution.',
-    technologies: ['Apache Kafka', 'Python', 'Distributed Computing'],
-    impact: 'Reduced image processing time by 70% and achieved a 5x throughput improvement through parallelized chunking.',
+    problem: 'High computational latency and sequential processing bottlenecks when applying heavy computer vision transformations to large 4K high-resolution images.',
+    solution: 'Engineered a fault-tolerant producer–broker–consumer pipeline using Apache Kafka consumer groups and Flask to distribute tile-partitioned 4K image workloads across concurrent worker nodes.',
+    technologies: ['Python', 'Apache Kafka', 'OpenCV', 'Flask', 'Distributed Computing'],
+    impact: 'Parallelized OpenCV image transformations with lossless final image reconstruction, tuning Kafka partition and batch sizes to eliminate bottlenecks and multiply throughput.',
+    active: false,
+  },
+  {
+    name: 'Mini-UnionFS — Union File System in Userspace',
+    problem: 'Need for a virtual file system that transparently merges distinct directory branches while preserving underlying read-only assets and providing isolated write layers.',
+    solution: 'Implemented a user-space Union File System in C using FUSE by merging read-only and read-write directory layers with full POSIX operation support.',
+    technologies: ['C', 'Linux', 'FUSE', 'POSIX APIs'],
+    impact: 'Developed Copy-on-Write (CoW) semantics and whiteout-based deletion handling, replicating key architectural concepts of Docker’s layered filesystem.',
     active: false,
   },
   {
     name: 'Personal Portfolio Website',
-    problem: 'Need for a professional, highly polished, and lightning-fast developer portfolio to showcase engineering projects, work experience, and technical toolkit.',
-    solution: 'Engineered a modern personal portfolio website using Next.js 16 App Router, React 19, TypeScript, and Tailwind CSS v4. Features centralized content management, motion-driven reveal animations, custom dark theme aesthetics with warm amber ambient glow, and fully responsive design.',
-    technologies: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Motion'],
-    impact: 'Delivered a production-ready, performant engineering portfolio optimized for recruiters and internship applications.',
+    problem: 'Need for a professional, performant, and easily maintainable developer portfolio showcasing production systems, engineering projects, and technical toolkit.',
+    solution: 'Built and deployed a responsive developer portfolio using Next.js App Router and TypeScript with modular component architecture, centralized content management, SEO optimization, and motion-driven UI interactions.',
+    technologies: ['TypeScript', 'Next.js', 'React', 'Tailwind CSS', 'Motion'],
+    impact: 'Configured automated GitHub-to-Vercel continuous deployment pipelines, server-rendered metadata routes, and strict TypeScript type checking for zero-downtime releases.',
     github: 'https://github.com/aayush-1105/Portfolio',
-    active: true,
+    link: 'https://aayushspace.vercel.app/',
+    active: false,
   },
 ]
 
-/* EDITABLE: SKILLS (no bars, no ratings) */
+/* EDITABLE: SKILLS (Categorized toolkit) */
 export type SkillCategory = {
   category: string
   items: string[]
 }
 
 export const skills: SkillCategory[] = [
-  { category: 'Languages', items: ['Python', 'Java', 'C', 'SQL (OpenSQL)', 'JavaScript', 'HTML/CSS'] },
-  { category: 'Frameworks', items: ['React', 'Node.js'] },
-  { category: 'Libraries & Tools', items: ['pandas', 'NumPy', 'Matplotlib', 'Appium', 'Selenium', 'PyTesseract', 'FUSE', 'Apache Kafka', 'POSIX APIs'] },
-  { category: 'Developer Tools', items: ['Git', 'Visual Studio', 'IntelliJ', 'Linux', 'Distributed Computing'] },
+  { category: 'Languages', items: ['Python', 'C', 'JavaScript', 'TypeScript', 'SQL', 'HTML/CSS'] },
+  { category: 'AI Tooling', items: ['Claude Code', 'Antigravity', 'Ollama (Mistral)', 'Cline'] },
+  { category: 'Frameworks', items: ['FastAPI', 'React', 'Next.js', 'Node.js', 'Streamlit'] },
+  { category: 'Libraries & Tools', items: ['Docker', 'Redis', 'Qdrant', 'Apache Kafka', 'Pytest', 'Locust', 'Pandas', 'NumPy', 'Appium'] },
+  { category: 'Developer Tools', items: ['Git', 'Linux', 'VS Code', 'IntelliJ IDEA'] },
 ]
 
 /* EDITABLE: CONTACT */
 export const contact = {
   email: 'aayushjha1105@gmail.com', // EDITABLE: EMAIL
   phone: '9380519750', // EDITABLE: PHONE
-  location: 'Bangalore, India', // EDITABLE: LOCATION
+  location: 'Bangalore, KA', // EDITABLE: LOCATION
   socials: {
     github: 'https://github.com/aayush-1105', // EDITABLE: GITHUB
     linkedin: 'https://in.linkedin.com/in/aayush-jha-252a38217', // EDITABLE: LINKEDIN
@@ -160,4 +171,4 @@ export const navLinks = [
   { label: 'CONTACT', href: '#contact' },
 ]
 
-export const resumeUrl = 'https://drive.google.com/file/d/1KhA6fZ8biyMSJGY8se52tgY9Z6wxOUVp/view?usp=sharing' // EDITABLE: RÉSUMÉ FILE
+export const resumeUrl = '/resume.pdf' // EDITABLE: RÉSUMÉ FILE
