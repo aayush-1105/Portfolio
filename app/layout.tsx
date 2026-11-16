@@ -16,23 +16,22 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Portfolio — Software Engineer',
+  title: "Aayush's Portfolio",
   description:
-    'The personal engineering journal and portfolio of a final-year Computer Science student.',
-  generator: 'v0.app',
+    'The personal engineering portfolio of Aayush Jha — Computer Science Student & Software Engineer.',
   icons: {
     icon: [
       {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
+        url: '/icon.svg',
+        type: 'image/svg+xml',
       },
       {
         url: '/icon-dark-32x32.png',
         media: '(prefers-color-scheme: dark)',
       },
       {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
+        url: '/icon-light-32x32.png',
+        media: '(prefers-color-scheme: light)',
       },
     ],
     apple: '/apple-icon.png',
