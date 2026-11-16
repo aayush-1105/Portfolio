@@ -109,17 +109,17 @@ export function Hero() {
         {/* Photo / avatar */}
         {profile.showAvatar && (
           <motion.div variants={item} className="order-first md:order-last">
-            <div className="relative aspect-[4/5] w-48 overflow-hidden rounded-xl border border-white/10 bg-card/40 md:w-56 shadow-2xl">
+            <div className="relative w-48 overflow-hidden rounded-sm border border-border md:w-56">
               <Image
                 src={profile.avatar || '/placeholder.svg'}
                 alt={`Portrait of ${profile.name}`}
-                fill
-                sizes="(max-width: 768px) 192px, 224px"
-                className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+                width={1000}
+                height={1250}
+                className="h-auto w-full rounded-sm object-cover transition-all duration-700 transform-gpu hover:scale-105"
+                style={{ imageRendering: 'auto' }}
                 priority
               />
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent" />
-              <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-white/10 rounded-xl" />
+              <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-white/5" />
             </div>
           </motion.div>
         )}
